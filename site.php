@@ -19,12 +19,12 @@ session_start ();
     <div class="header">Mes PROJECT</div>
     <div class="nav"> 
 <?php if (isset($_SESSION['user'])) { ?>
-        <a href="deconnexion.php">Deconnexion</a>
+        <a href="ajout.php">Ajouter un projet</a> ." | ".<a href="deconnexion.php">Deconnexion</a></div>
                      <?php   }
 
         else { ?>
 
-        <a href="inscription.php">Inscription</a> | Connection </div>
+        <a href="inscription.php">Inscription</a> | <a href="connexion.php"> Connection </a></div>
     
             <?php  }  ?>
     <div class="bann"></div>
