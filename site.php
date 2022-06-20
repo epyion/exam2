@@ -1,3 +1,6 @@
+<?php
+session_start ();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +18,15 @@
 <body>
     <div class="header">Mes PROJECT</div>
     <div class="nav"> 
+<?php if (isset($_SESSION['user'])) { ?>
+        <a href="deconnexion.php">Deconnexion</a>
+                     <?php   }
+
+        else { ?>
+
         <a href="inscription.php">Inscription</a> | Connection </div>
+    
+            <?php  }  ?>
     <div class="bann"></div>
     <div class="text">Vous pouvez trouver ci-dessous mes projets réalisés dans leur entièreté ainsi que le lien vers ceux-ci.</div>
     <h1>Premier Project</h1>
