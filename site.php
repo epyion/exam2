@@ -29,7 +29,15 @@ session_start ();
             <?php  }  ?>
     <div class="bann"></div>
     <div class="text">Vous pouvez trouver ci-dessous mes projets réalisés dans leur entièreté ainsi que le lien vers ceux-ci.</div>
-    <h1>Premier Project</h1>
+
+    <?php
+    $sql ="SELECT * INTO projet WHERE id_projet";
+            $requete= $bdd->prepare($sql);
+            $requete->execute();
+            $row=$requete->fetch();
+
+    ?>
+    <h1><?php echo $row["nom_projet"];?></h1>
     <div class="grid-container">
         <div class="maquette"></div>
         <a href="site.php"><div class="site"></div></a>

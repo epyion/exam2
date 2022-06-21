@@ -18,18 +18,14 @@ session_start();
         <div class="fond">
             <div class="container-form">
                 <div class="enregistrer">
-                <form action="ajouter.php" method="post">
+                <form action="ajouter.php" method="post" enctype="multipart/form-data" >
             <p>
                 <label for="nom_project"  required></label>
-                <input id="nom_project" type="text" name="nom_project" placeholder="nom_project">
-            </p>
-            <p>
-                <label for="maquette"  required>maquette du site</label>
-                <input id="maquette" type="file" name="maquette" placeholder="image maquette" > 
+                <input id="nom_project" type="text" name="nom_projet" placeholder="nom_project">
             </p>
             <p>
                 <label for="site"  required>image du site</label>
-                <input id="site" type="file" name="site" placeholder="site img"> 
+                <input id="site" type="file" name="upload_file" placeholder="site img"> 
             </p>
             <p>
                 <label for="lien_site"  required></label>
@@ -50,9 +46,49 @@ session_start();
             </div>
         <a href="site.php"> <button>retour</button></a>
         </div>
+
+
+
    
 
 
 
 </body>
 </html>
+
+<?php 
+
+if (isset($_POST['submit']))
+{
+    $maxsize = 250000;
+    $validext = array('.jpg', '.jpeg', '.gif', '.png' );
+
+    if($_FILES['upload_file']['error'] > 0 ) {
+
+        echo "une erreur est survenue lors du transfer";
+        die;
+    }
+
+    $filesize = $_FILES['upload_file']['size'];
+
+    if ($filesize > $maxsize)
+    {
+        echo "le fichier est trop gros !";
+        die;
+    }
+
+    $filename = $_FILES['upload_file']['name'];
+    $fileext = "." . strtolower(substr(strrchr($filename, '.'), 1));
+
+    if(!in_array($fileext, $validext))
+     {
+        echo "le fichier n'est pas une image";
+    }
+
+    $tmpname = $_FILES['upload_file']['tmp_name'];
+    $uniquenme = md5(uniqid(rand(), true));
+    $filename = "img/" . $uniquename . $fileext;
+    move_uploaded_file($tmpname, $filename);
+}
+
+?>

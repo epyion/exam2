@@ -20,7 +20,7 @@
                     if($data['mdp_utilisateurs'] === $password)
                     {
                     $_SESSION['user'] = $pseudo;
-
+                    
                     header('location:site.php?login_err=success');
                      }
                      else header('location:connexion.php?login_err=password');
