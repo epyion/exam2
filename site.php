@@ -1,5 +1,6 @@
 <?php
 session_start ();
+include 'bdd.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,7 +20,7 @@ session_start ();
     <div class="header">Mes PROJECT</div>
     <div class="nav"> 
 <?php if (isset($_SESSION['user'])) { ?>
-        <a href="ajout_project.php">Ajouter un projet</a> | <a href="deconnexion.php">Deconnexion</a></div>
+        <a href="ajout_project.php">Ajouter un projet</a> | <a href="crud_projet.php">C.R.U.D</a> | <a href="deconnexion.php">Deconnexion</a></div>
                      <?php   }
 
         else { ?>
@@ -31,19 +32,21 @@ session_start ();
     <div class="text">Vous pouvez trouver ci-dessous mes projets réalisés dans leur entièreté ainsi que le lien vers ceux-ci.</div>
 
     <?php
-    $sql ="SELECT * INTO projet WHERE id_projet";
-            $requete= $bdd->prepare($sql);
-            $requete->execute();
-            $row=$requete->fetch();
+    $requete=$bdd->prepare("SELECT * FROM projet p,utilisateur u WHERE p.id_projet and p.id_utilisateurs = u.id_utilisateurs");
+    $requete->execute();
 
-    ?>
-    <h1><?php echo $row["nom_projet"];?></h1>
+    while ($row = $requete->fetch()){
+        ?>
+   
+
+
+    <h1><?php echo $row["nom_projet"];?> ajouter le <?php echo $row['date_ajout'] ?> par <?php echo $row['nom_utilisateurs'] ?> </h1>
     <div class="grid-container">
         <div class="maquette"></div>
-        <a href="site.php"><div class="site"></div></a>
-        <a href="https://github.com/epyion/Exam/tree/site"><div class="github"><i class="fa-brands fa-github"></i></div></a>
-
+        <a href=<?php echo $row['site_lien'] ?>><div class="site"></div></a>
+        <a href=<?php echo $row['github'] ?>><div class="github"><i class="fa-brands fa-github"></i></div></a>
     </div>
+ <?php } ?>
 
 
     
