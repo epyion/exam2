@@ -19,7 +19,7 @@ session_start ();
     <div class="header">Mes PROJECT</div>
     <div class="nav"> 
 <?php if (isset($_SESSION['user'])) { ?>
-        <a href="ajout.php">Ajouter un projet</a> ." | ".<a href="deconnexion.php">Deconnexion</a></div>
+        <a href="ajout_project.php">Ajouter un projet</a> | <a href="deconnexion.php">Deconnexion</a></div>
                      <?php   }
 
         else { ?>
