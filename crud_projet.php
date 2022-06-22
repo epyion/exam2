@@ -53,16 +53,22 @@ include 'bdd.php';
         <div class="maquette"></div>
         <a href=<?php echo $row['site_lien'] ?>><div class="site"></div></a>
         <a href=<?php echo $row['github'] ?>><div class="github"><i class="fa-brands fa-github"></i></div></a>
-        <a href="supp_projet" id="supp_projet" ><i class="fa-solid fa-trash-can"></i></a>
+        <a href="" id="supp_projet" onclick="deleteAjax()" ><i class="fa-solid fa-trash-can"></i></a>
         
   
 
     </div>
- <?php } ?>
-    
-    
+
+
+
+
+ 
+  <?php } 
+ ?>
+ 
+    <script
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
 </body>
 </html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
