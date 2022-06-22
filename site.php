@@ -17,7 +17,7 @@ include 'bdd.php';
     <title>Document</title>
 </head>
 <body>
-    <div class="header">Mes PROJECT</div>
+    <div class="header">MES PROJETS</div>
     <div class="nav"> 
 <?php if (isset($_SESSION['user'])) { ?>
         <a href="ajout_project.php">Ajouter un projet</a> | <a href="crud_projet.php">C.R.U.D</a> | <a href="deconnexion.php">Deconnexion</a></div>

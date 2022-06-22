@@ -2,6 +2,7 @@
 session_start();
 include 'bdd.php';
 
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,6 +26,8 @@ include 'bdd.php';
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="site.css">
     <title>Document</title>
+
+
 </head>
 <body>
     <div class="header">Mes PROJECT</div>
@@ -47,14 +50,14 @@ include 'bdd.php';
         ?>
    
 
-
-    <h1><?php echo $row["nom_projet"];?> ajouter le <?php echo $row['date_ajout'] ?> par <?php echo $row['nom_utilisateurs'] ?> </h1>
-    <div class="grid-container">
+        <div>
+        <h1><?php echo $row["nom_projet"];?> ajouter le <?php echo $row['date_ajout'] ?> par <?php echo $row['nom_utilisateurs'] ?> </h1>
+        <div class="grid-container">
         <div class="maquette"></div>
         <a href=<?php echo $row['site_lien'] ?>><div class="site"></div></a>
         <a href=<?php echo $row['github'] ?>><div class="github"><i class="fa-brands fa-github"></i></div></a>
-        <a href="" id="supp_projet" onclick="deleteAjax()" ><i class="fa-solid fa-trash-can"></i></a>
-        
+        <a onclick="deleteAjax(<?php echo $row['id_projet'] ?>, event)" ><i class="fa-solid fa-trash-can"></i></a>
+        </div>
   
 
     </div>
@@ -64,11 +67,9 @@ include 'bdd.php';
 
  
   <?php } 
+
  ?>
- 
-    <script
-			  src="https://code.jquery.com/jquery-3.6.0.js"
-			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+    <script  src="ajax.js"></script>
 </body>
 </html>
